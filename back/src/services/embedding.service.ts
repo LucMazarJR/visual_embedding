@@ -1,5 +1,7 @@
+import { embedSentences } from "../lib/embedSentences.js"
+
 export const embeddingServices = {
-    embedData(sentences: string[]) {
-        
+    async embedData(sentences: string[] | string) {
+        return embedSentences(sentences)
     }
 }

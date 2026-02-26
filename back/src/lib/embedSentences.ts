@@ -6,7 +6,7 @@ if (!process.env.GEMINI_API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY});
 
-export async function embedSentence(sentences: string[]) {
+export async function embedSentences(sentences: string[] | string) {
     const result = await ai.models.embedContent({
         model: 'gemini-embedding-001',
         contents: sentences,

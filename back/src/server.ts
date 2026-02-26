@@ -1,4 +1,6 @@
+import 'dotenv/config'
 import express from "express"
+import routes from "./routes/index.js"
 
 const app = express()
 const port = 3001
@@ -14,3 +16,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server rodando em http://localhost:${port}`)
 })
+
+app.use('/api', routes);
