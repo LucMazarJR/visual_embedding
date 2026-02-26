@@ -1,0 +1,4 @@
+# Back gitignore
+back/dist
+back/node_modules
+back/.env
