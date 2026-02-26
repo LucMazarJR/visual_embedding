@@ -1,0 +1,30 @@
+version: "1.0"
+
+services:
+
+  next:
+    build: ./next
+    container_name: next_dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./next:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    command: npm run dev
+    depends_on:
+      - express
+
+  express:
+    build: ./express
+    container_name: express_dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./express:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
