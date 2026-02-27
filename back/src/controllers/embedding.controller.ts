@@ -3,24 +3,25 @@ import type { Request, Response } from "express";
 import { AppError } from "../errors/appError.js";
 
 export const embeddingCotroller = {
-  async reciveSentences(req: Request, res: Response) {
-    try {
-      const { sentences } = req.body;
+    async reciveSentences(req: Request, res: Response) {
+        try {
+            const { sentences } = req.body;
+            console.log(sentences)
 
-      if (!sentences) {
-        throw new AppError("No sentences provided", 422);
-      }
+            if (!sentences) {
+                throw new AppError("No sentences provided", 422);
+            }
 
-      const data = await embeddingServices.embedData(sentences);
+            const data = await embeddingServices.embedData(sentences);
 
-      return res.status(200).json(data);
+            return res.status(200).json(data);
 
-    } catch (e: any) {
-      if (e instanceof AppError) {
-        return res.status(e.statusCode).json({ error: e.message });
-      }
+        } catch (e: any) {
+            if (e instanceof AppError) {
+                return res.status(e.statusCode).json({ error: e.message });
+            }
 
-      return res.status(500).json({ error: "Internal server error" });
+            return res.status(500).json({ error: "Internal server error" });
+        }
     }
-  }
 };

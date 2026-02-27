@@ -5,6 +5,8 @@ import routes from "./routes/index.js"
 const app = express()
 const port = 3001
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
   res.send({
     "status": "ok",
@@ -13,8 +15,8 @@ app.get('/', (req, res) => {
   })
 })
 
+app.use('/api', routes);
+
 app.listen(port, () => {
   console.log(`Server rodando em http://localhost:${port}`)
 })
-
-app.use('/api', routes);
