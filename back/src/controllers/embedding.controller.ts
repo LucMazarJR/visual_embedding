@@ -6,7 +6,6 @@ export const embeddingCotroller = {
     async reciveSentences(req: Request, res: Response) {
         try {
             const { sentences } = req.body;
-            console.log(sentences)
 
             if (!sentences) {
                 throw new AppError("No sentences provided", 422);
