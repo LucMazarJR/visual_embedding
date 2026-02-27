@@ -1,5 +1,6 @@
 import { UMAP } from 'umap-js';
 import { cosine, type Vectors } from 'umap-js/dist/umap.js';
+import { seededRandom } from './seededRandom.js';
 
 function l2Normalize(vec: number[]) {
   const s = Math.sqrt(vec.reduce((a,b)=>a+b*b, 0));
@@ -24,7 +25,8 @@ export const applyUmap = (data: Vectors) => {
     const umap = new UMAP({
       nNeighbors: n_neighbors,
       minDist: 0.4,
-      distanceFn: cosine
+      distanceFn: cosine,
+      random: seededRandom(42)
     });
 
     const nEpochs = umap.initializeFit(normed);
