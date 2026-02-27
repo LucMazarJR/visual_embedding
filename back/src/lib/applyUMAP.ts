@@ -16,7 +16,7 @@ function chooseNNeighbors(nSamples: number) {
   return Math.max(10, Math.min(v, 100)); // entre 10 e 100
 }
 
-export const applyUmap = (data: Vectors) => {
+export const applyUmap = (data: Vectors)=> {
   try {
     const n_samples = data.length;
     const normed = data.map(l2Normalize);
@@ -32,7 +32,8 @@ export const applyUmap = (data: Vectors) => {
     const nEpochs = umap.initializeFit(normed);
     for (let i = 0; i < nEpochs; i++) umap.step();
 
-    return umap.getEmbedding();
+    const embedding = umap.getEmbedding()
+    return embedding.map(p => [p[0], p[1]] as [number, number])
   } catch (e) {
     console.error("Error applying UMAP:", e);
     return null;
