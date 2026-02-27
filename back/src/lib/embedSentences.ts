@@ -10,7 +10,7 @@ export async function embedSentences(sentences: string[] | string) {
     const result = await ai.models.embedContent({
         model: 'gemini-embedding-001',
         contents: sentences,
-        config: { taskType: 'SEMANTIC_SIMILARITY' }
+        config: { taskType: 'SEMANTIC_SIMILARITY', outputDimensionality: 768 },
     });
 
     return result
