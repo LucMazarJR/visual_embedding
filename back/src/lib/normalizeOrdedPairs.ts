@@ -10,7 +10,7 @@ export function normalize(points: [number, number][]): [number, number][] {
     const maxY = Math.max(...ys)
 
     return points.map(([x, y]) => [
-        (x - minX) / (maxX - minX || 1),
-        (y - minY) / (maxY - minY || 1)
+        2 * (x - minX) / (maxX - minX || 1) - 1,
+        2 * (y - minY) / (maxY - minY || 1) - 1
     ])
 }

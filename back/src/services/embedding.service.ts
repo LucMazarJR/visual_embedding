@@ -1,6 +1,5 @@
 import { applyUmap } from "../lib/applyUMAP.js"
 import { embedSentences } from "../lib/embedSentences.js"
-import { center } from "../lib/centralizeOrdedPairs.js"
 import { normalize } from "../lib/normalizeOrdedPairs.js"
 
 export const embeddingServices = {
@@ -13,8 +12,7 @@ export const embeddingServices = {
       throw new Error("Falha ao aplicar UMAP")
     }
     
-    const centeredData = center(reducedData as number[][]) as [number, number][]
-    const normalized = normalize(centeredData)
+    const normalized = normalize(reducedData as [number, number][])
     return normalized
   }
 }
