@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/layout/footer";
+import Header from "./components/layout/header";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -11,7 +12,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Sentence Space",
   description: "", // Adicionar descrição depois
-  
+
 };
 
 export default function RootLayout({
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} antialiased flex flex-col min-h-screen`}
       >
+        <Header/>
         {children}
         <Footer/>
       </body>
