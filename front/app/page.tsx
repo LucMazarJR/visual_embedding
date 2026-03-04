@@ -1,9 +1,7 @@
-import PlanoCartesiano from "./components/cartesian_plane";
-
 export default function Home() {
   return (
-    <div className="flex items-center justify-center h-[50vh] w-[50vh]">
-      <PlanoCartesiano/>
+    <div className="flex flex-col items-center">
+      <h1 className="font-bold p-6 mt-2 text-4xl font-roboto">Bem vindo a Sentence Space!</h1>
     </div>
   );
 }

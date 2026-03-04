@@ -3,13 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --deep-blue: #001031;
+  --light-blue: #F4FFFC;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-footer-background: var(--deep-blue);
+  --color-footer-foreground: var(--light-blue);
+
+  --font-roboto: var(--font-roboto);
 }
 
 /* Tema Escuro - Adicionar futuramente
@@ -22,7 +26,7 @@
 */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+    background: var(--light-blue);
+
   font-family: Arial, Helvetica, sans-serif;
 }
