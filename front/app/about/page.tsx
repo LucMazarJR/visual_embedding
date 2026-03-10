@@ -1,8 +1,8 @@
 export default function About() {
     return (
         <div className="flex flex-col items-center w-full text-center">
-            <div className="flex flex-col w-1/2 gap-8 text-justify">
-                <h1 className="font-bold text-4xl text-center">O que é o Sentence Space?</h1>
+            <h1 className="font-bold text-4xl text-center">O que é o Sentence Space?</h1>
+            <div className="flex flex-col w-1/2 gap-10 text-justify mt-2">
                 <section>
                     <p>Sentence Space é um experimento/ferramenta que transforma frases em vetores e as mostra num espaço visual para você ver, explorar e entender como uma IA à interpreta e organiza semanticamente.</p>
                 </section>
