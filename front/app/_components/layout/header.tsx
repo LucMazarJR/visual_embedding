@@ -1,22 +1,10 @@
-import Link from "next/link";
 import LanguageButton from "./language_button";
+import NavBar from "./nav";
 
 export default function Header() {
     return (
         <header className="flex justify-between py-8 px-6">
-            <nav>
-                <ul className="flex gap-12 items-center">
-                    <li>
-                        <Link href={"/"}>Home</Link>
-                    </li>
-                    <li>
-                        <Link href={"/about"}>About</Link>
-                    </li>
-                    <li>
-                        <Link href={"/workspace"}>Workspace</Link>
-                    </li>
-                </ul>
-            </nav>
+            <NavBar/>
             <LanguageButton/>
         </header>
     )
