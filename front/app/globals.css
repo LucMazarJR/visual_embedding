@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --deep-blue: #001031;
   --light-blue: #F4FFFC;
 }
 
 @theme inline {
   --color-background: var(--light-blue);
-  --color-foreground: var(--foreground);
+  --color-foreground: var(--deep-blue);
   --color-footer-background: var(--deep-blue);
   --color-footer-foreground: var(--light-blue);
 
@@ -27,5 +25,5 @@
 
 body {
   background: var(--color-background);
-  
+  color: var(--color-foreground);
 }
