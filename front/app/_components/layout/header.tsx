@@ -7,10 +7,10 @@ export default function Header() {
             <nav>
                 <ul className="flex gap-12 items-center">
                     <li>
-                        <Link href={"/"}>HOME</Link>
+                        <Link href={"/"}>Home</Link>
                     </li>
                     <li>
-                        <Link href={"/about"}>ABOUT</Link>
+                        <Link href={"/about"}>About</Link>
                     </li>
                 </ul>
             </nav>
