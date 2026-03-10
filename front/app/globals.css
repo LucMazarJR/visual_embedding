@@ -13,7 +13,7 @@
   --color-footer-background: var(--deep-blue);
   --color-footer-foreground: var(--light-blue);
 
-  --font-roboto: var(--font-roboto);
+  --font-inter: var(--font-inter);
 }
 
 /* Tema Escuro - Adicionar futuramente
@@ -27,5 +27,5 @@
 
 body {
   background: var(--color-background);
-  font-family: Arial, Helvetica, sans-serif;
+  
 }
