@@ -2,7 +2,7 @@ import styles from './page.module.css'
 
 export default function About() {
     return (
-        <div className="flex flex-col items-center w-full text-center">
+        <div className="flex flex-col items-center w-full text-center mb-24">
             <h1 className="font-bold text-4xl text-center">O que é o Sentence Space?</h1>
             <div className="flex flex-col w-1/2 gap-10 text-justify mt-2">
                 <section>
@@ -28,9 +28,15 @@ export default function About() {
                     <h3>E por que isso importa?</h3>
                     <div className="flex flex-col items-center mt-2">
                         <ul className="list-disc list-inside space-y-2 marker:font-bold w-[95vh]">
-                            <li><span>Torna o abstrato visível</span></li>
+                            <li><span>Torna o abstrato visível:</span> embeddings são números; aqui você vê onde frases parecidas ficam próximas no espaço.</li>
+                            <li><span>Aprendizado e diagnóstico:</span> ajuda a entender modelos de linguagem, clusters semânticos e possíveis vieses</li>
+                            <li><span>Protótipo prático:</span> inspiração direta de como embeddings são usados em chatbots e bancos vetoriais para busca por similaridade.</li>
                         </ul>
                     </div>
+                </section>
+                <section className={styles.section}>
+                    <h3>Inspiração</h3>
+                    <p>A ideia nasceu do uso de embeddings para aproximação semântica em chatbots e bancos de dados vetoriais. Explicações didáticas normalmente mostram frases em um plano cartesiano; o Sentence Space é justamente a versão prática e interativa dessa ideia — simples e visual.</p>
                 </section>
             </div>
         </div>
