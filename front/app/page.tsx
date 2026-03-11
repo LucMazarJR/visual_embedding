@@ -8,8 +8,12 @@ export default function Home() {
           <h1 className="font-black tracking-wider text-7xl">Bem vindo à Sentence Space</h1>
           <p className="text-xl">Explore o conceito de vetores semânticos e vizualize como a inteligência artificial processa o significado da linguagem em dimensões matemáticas</p>
           <div className="space-x-4">
-            <button className="rounded-xl bg-foreground text-background p-3">Começar Agora</button>
-            <button className="rounded-xl bg-gray-100 p-3 border-2 border-gray-200"><Link href={"/about"}>Saiba Mais</Link></button>
+            <button className="rounded-xl bg-foreground text-background p-3">
+              <Link href={"/workspace"}>Começar Agora</Link>
+            </button>
+            <button className="rounded-xl bg-gray-100 p-3 border-2 border-gray-200">
+              <Link href={"/about"}>Saiba Mais</Link>
+            </button>
           </div>
         </div>
       </div>
