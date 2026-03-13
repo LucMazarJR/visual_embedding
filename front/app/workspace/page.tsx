@@ -1,7 +1,3 @@
-export default function WorkSpace(){
-    return(
-        <div>
-            
-        </div>
-    )
+export default function WorkSpace() {
+  return <div></div>;
 }

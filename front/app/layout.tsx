@@ -12,7 +12,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Sentence Space",
   description: "", // Adicionar descrição depois
-
 };
 
 export default function RootLayout({
@@ -23,11 +22,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${inter.variable} antialiased flex flex-col min-h-screen`}
+        className={`${inter.variable} flex min-h-screen flex-col antialiased`}
       >
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

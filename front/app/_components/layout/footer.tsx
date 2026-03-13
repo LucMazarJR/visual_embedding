@@ -1,12 +1,9 @@
 export default function Footer() {
-    return (
-        <footer className="mt-auto bg-footer-background text-footer-foreground p-4 grid grid-cols-3 gap-2 ">
-            <div>
-            </div>
-            <div>
-            </div>
-            <div>
-            </div>
-        </footer>
-    )
+  return (
+    <footer className="bg-footer-background text-footer-foreground mt-auto grid grid-cols-3 gap-2 p-4">
+      <div></div>
+      <div></div>
+      <div></div>
+    </footer>
+  );
 }

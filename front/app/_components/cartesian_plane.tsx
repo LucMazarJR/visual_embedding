@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   ScatterChart,
@@ -31,20 +31,10 @@ export default function CartesianPlane() {
           <CartesianGrid strokeDasharray="3 3" />
 
           {/* Eixo X */}
-          <XAxis
-            type="number"
-            dataKey="x"
-            domain={[-1.1, 1.1]}
-            tickCount={7}
-          />
+          <XAxis type="number" dataKey="x" domain={[-1.1, 1.1]} tickCount={7} />
 
           {/* Eixo Y */}
-          <YAxis
-            type="number"
-            dataKey="y"
-            domain={[-1.1, 1.1]}
-            tickCount={7}
-          />
+          <YAxis type="number" dataKey="y" domain={[-1.1, 1.1]} tickCount={7} />
 
           {/* Linha vertical no X = 0 */}
           <ReferenceLine x={0} stroke="black" />
