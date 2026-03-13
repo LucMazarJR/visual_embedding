@@ -19,9 +19,15 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="bg-[url('/frame1.svg')] bg-repeat flex items-center justify-center w-lg h-128 border border-gray-300 rounded-2xl shadow-2xl">
-          <div className="border-5 w-fit h-fit rounded-full border-dashed border-gray-200 animate-spin [animation-duration:10s]">
-            <Box className="w-42 h-42 m-20 animate-spin [animation-duration:10s] [animation-direction:reverse] border border-gray-700 rounded-full p-12 shadow-2xl" color="#99a1af"/>
+        <div className="relative isolate flex flex-col gap-6 h-128 w-lg items-center justify-center overflow-hidden rounded-2xl border border-gray-300 bg-[url('/frame1.svg')] bg-repeat shadow-2xl">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <div className="h-72 w-72 rounded-full bg-gray-300/60 blur-3xl" />
+          </div>
+          <div className="relative z-10 h-fit w-fit animate-spin rounded-full border-5 border-dashed border-gray-400 [animation-duration:40s]">
+            <Box className="h-42 w-42 m-20 animate-spin rounded-full border border-gray-400 p-12 drop-shadow-2xl [animation-direction:reverse] [animation-duration:40s]" color="#99a1af" />
+          </div>
+          <div className="z-10">
+            a
           </div>
         </div>
       </div>
