@@ -1,4 +1,4 @@
-import { Box } from "lucide-react";
+import { Box, Globe, Axis3D } from "lucide-react";
 import Link from "next/link";
 import { Share_Tech } from "next/font/google";
 
@@ -34,15 +34,25 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <div className="relative isolate flex h-128 w-lg flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-gray-300 bg-[url('/bgs/frame1.svg')] bg-repeat shadow-2xl">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="h-72 w-72 rounded-full bg-gray-300/60 blur-3xl" />
+            <div className="h-80 w-80 rounded-full bg-gray-400/50 blur-3xl" />
           </div>
-          <div className="relative z-10 h-fit w-fit animate-spin rounded-full border-5 border-dashed border-gray-400 [animation-duration:40s]">
+          <div className="relative z-10 h-fit w-fit animate-spin rounded-full border-4 border-dashed border-gray-300 [animation-duration:40s]">
             <Box
-              className="m-20 h-42 w-42 animate-spin rounded-full border border-gray-400 p-12 drop-shadow-2xl [animation-direction:reverse] [animation-duration:40s]"
-              color="#99a1af"
+              className="m-20 h-42 w-42 animate-spin rounded-full border-2 border-gray-400 p-12 drop-shadow-2xl [animation-direction:reverse] [animation-duration:40s]"
+              color="#505967"
             />
           </div>
-          <div className={`z-10 ${share_tech.className}`}>
+          <div className="absolute z-20 h-80 w-80">
+            <div className="absolute top-6 -right-15 flex items-center gap-2 rounded-lg border border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl">
+              <Globe />
+              PROXIMIDADE <br />
+              SEMÂNTICA
+            </div>
+            <div className="absolute bottom-15 -left-15 flex items-center gap-2 rounded-lg border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl">
+              <Axis3D /> SIMILARIDADE DO <br /> COSSENO
+            </div>
+          </div>
+          <div className={`relative z-10 ${share_tech.className}`}>
             CAMPO DE VETORES INTERATIVO
           </div>
         </div>
