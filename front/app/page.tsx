@@ -1,5 +1,12 @@
 import { Box } from "lucide-react";
 import Link from "next/link";
+import { Share_Tech } from "next/font/google";
+
+const share_tech = Share_Tech({
+  weight: "400",
+  variable: "--font-share-tech",
+  subsets: ["latin"],
+});
 
 export default function Home() {
   return (
@@ -26,8 +33,8 @@ export default function Home() {
           <div className="relative z-10 h-fit w-fit animate-spin rounded-full border-5 border-dashed border-gray-400 [animation-duration:40s]">
             <Box className="h-42 w-42 m-20 animate-spin rounded-full border border-gray-400 p-12 drop-shadow-2xl [animation-direction:reverse] [animation-duration:40s]" color="#99a1af" />
           </div>
-          <div className="z-10">
-            a
+          <div className={`z-10 ${share_tech.className}`}>
+            CAMPO DE VETORES INTERATIVO
           </div>
         </div>
       </div>
