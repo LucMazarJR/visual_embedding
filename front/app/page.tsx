@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="relative isolate flex h-128 w-lg flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-gray-300 bg-[url('/frame1.svg')] bg-repeat shadow-2xl">
+        <div className="relative isolate flex h-128 w-lg flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-gray-300 bg-[url('/bgs/frame1.svg')] bg-repeat shadow-2xl">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <div className="h-72 w-72 rounded-full bg-gray-300/60 blur-3xl" />
           </div>
