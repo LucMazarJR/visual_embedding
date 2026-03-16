@@ -15,7 +15,7 @@ export default function LanguageButton() {
 
   return (
     <button
-      className="cursor-pointer"
+      className="cursor-pointer transition-transform duration-150 ease-in-out hover:scale-110"
       onClick={() => setIsBrazilian(!isBrazilian)}
     >
       <Image
