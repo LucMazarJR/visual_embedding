@@ -22,12 +22,18 @@ export default function Home() {
             dimensões matemáticas
           </p>
           <div className="space-x-4">
-            <button className="bg-foreground text-background rounded-xl p-3">
-              <Link href={"/workspace"}>Começar Agora</Link>
-            </button>
-            <button className="rounded-xl border-2 border-gray-200 bg-gray-100 p-3">
-              <Link href={"/about"}>Saiba Mais</Link>
-            </button>
+            <Link
+              href={"/workspace"}
+              className="bg-foreground text-background inline-flex rounded-xl p-3 transition-all hover:bg-accent-foreground duration-100 ease-in-out hover:scale-105"
+            >
+              Começar Agora
+            </Link>
+            <Link
+              href={"/about"}
+              className="inline-flex rounded-xl border-2 border-gray-200 bg-gray-100 p-3 transition-all duration-100 ease-in-out hover:scale-105 hover:bg-gray-200"
+            >
+              Saiba Mais
+            </Link>
           </div>
         </div>
       </div>

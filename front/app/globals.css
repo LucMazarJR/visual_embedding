@@ -2,6 +2,7 @@
 
 :root {
   --deep-blue: #001031;
+  --deeper-blue: #112141;
   --light-blue: #f4fffc;
   --lesser-light-blue: #e1f8f1;
 }
@@ -9,6 +10,7 @@
 @theme inline {
   --color-background: var(--light-blue);
   --color-foreground: var(--deep-blue);
+  --color-accent-foreground: var(--deeper-blue);
   --color-footer-background: var(--deep-blue);
   --color-footer-foreground: var(--light-blue);
   --color-accent: var(--lesser-light-blue);
