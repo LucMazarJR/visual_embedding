@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center cursor-default">
         <div className="relative isolate flex h-128 w-lg flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-gray-300 bg-[url('/bgs/frame1.svg')] bg-repeat shadow-2xl">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <div className="h-80 w-80 rounded-full bg-gray-400/50 blur-3xl" />
@@ -43,12 +43,12 @@ export default function Home() {
             />
           </div>
           <div className="absolute z-20 h-80 w-80">
-            <div className="absolute top-6 -right-15 flex items-center gap-2 rounded-lg border border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl">
+            <div className="absolute top-6 -right-15 flex items-center gap-2 rounded-lg border border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl ease-in-out delay-50 duration-200 hover:scale-110">
               <Globe />
               PROXIMIDADE <br />
               SEMÂNTICA
             </div>
-            <div className="absolute bottom-15 -left-15 flex items-center gap-2 rounded-lg border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl">
+            <div className="absolute bottom-15 -left-15 flex items-center gap-2 rounded-lg border border-gray-300 bg-white p-1 px-2 text-center text-sm font-bold shadow-xl ease-in-out delay-50 duration-200 hover:scale-110 ">
               <Axis3D /> SIMILARIDADE DO <br /> COSSENO
             </div>
           </div>
