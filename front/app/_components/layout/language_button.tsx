@@ -5,9 +5,9 @@ import { useState } from "react";
 
 const getFlag = (isBrazilian: boolean) => {
   if (isBrazilian) {
-    return "/br-flag.png";
+    return "/icons/br-flag.png";
   }
-  return "/us-flag.png";
+  return "/icons/us-flag.png";
 };
 
 export default function LanguageButton() {
