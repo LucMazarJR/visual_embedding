@@ -10,7 +10,7 @@ const share_tech = Share_Tech({
 
 export default function Home() {
   return (
-    <div className="grid flex-1 grid-cols-2 p-8">
+    <div className="grid flex-1 grid-cols-2 p-8 py-20">
       <div className="flex h-full flex-col items-center justify-center">
         <div className="space-y-12 px-20">
           <h1 className="text-7xl font-black tracking-wider">
