@@ -24,7 +24,7 @@ export default function Home() {
           <div className="space-x-4">
             <Link
               href={"/workspace"}
-              className="bg-foreground text-background inline-flex rounded-xl p-3 transition-all hover:bg-accent-foreground duration-100 ease-in-out hover:scale-105"
+              className="bg-foreground text-background hover:bg-accent-foreground inline-flex rounded-xl p-3 transition-all duration-100 ease-in-out hover:scale-105"
             >
               Começar Agora
             </Link>
