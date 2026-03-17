@@ -16,14 +16,14 @@ export default function Footer() {
           <Copyright width={15} />
           2026 Sentence Space. Processamento semântico para testes com IA
         </div>
-        <div className="flex gap-4 border-gray-300">
-          <a href={"https://www.linkedin.com/in/lucianomazaraojr/"}>
+        <div className="flex gap-6 border-gray-300">
+          <a href={"https://www.linkedin.com/in/lucianomazaraojr/"} className="transition-transform hover:scale-105 ease-in-out delay-100">
             <Linkedin />
           </a>
-          <a href={"https://github.com/LucMazarJR"}>
+          <a href={"https://github.com/LucMazarJR"} className="transition-transform hover:scale-105 ease-in-out delay-100">
             <Github />
           </a>
-          <a href={"https://www.lucianomjr.dev/"}>
+          <a href={"https://www.lucianomjr.dev/"} className="transition-transform hover:scale-105 ease-in-out delay-100">
             <Globe />
           </a>
         </div>
