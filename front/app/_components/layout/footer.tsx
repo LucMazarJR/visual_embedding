@@ -17,13 +17,25 @@ export default function Footer() {
           2026 Sentence Space. Processamento semântico para testes com IA
         </div>
         <div className="flex gap-6 border-gray-300">
-          <a href={"https://www.linkedin.com/in/lucianomazaraojr/"} className="transition-transform hover:scale-105 ease-in-out delay-100">
+          <a
+            href={"https://www.linkedin.com/in/lucianomazaraojr/"}
+            className="transition-transform delay-100 ease-in-out hover:scale-105"
+            target="_blank"
+          >
             <Linkedin />
           </a>
-          <a href={"https://github.com/LucMazarJR"} className="transition-transform hover:scale-105 ease-in-out delay-100">
+          <a
+            href={"https://github.com/LucMazarJR"}
+            className="transition-transform delay-100 ease-in-out hover:scale-105"
+            target="_blank"
+          >
             <Github />
           </a>
-          <a href={"https://www.lucianomjr.dev/"} className="transition-transform hover:scale-105 ease-in-out delay-100">
+          <a
+            href={"https://www.lucianomjr.dev/"}
+            className="transition-transform delay-100 ease-in-out hover:scale-105"
+            target="_blank"
+          >
             <Globe />
           </a>
         </div>
