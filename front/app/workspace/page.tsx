@@ -16,6 +16,14 @@ export default function WorkSpace() {
     });
   };
 
+  const handleRemovePhrase = (index: number) => {
+    setPhrases((prev) => {
+      const next = [...prev];
+      next.splice(index, 1)
+      return next
+    })
+  }
+
   const handleAddPhrase = () => {
     if (phrases.length < 10) setPhrases([...phrases, ""]);
   };
@@ -45,13 +53,13 @@ export default function WorkSpace() {
                   <div className="flex relative group">
                     <input
                       type="text"
-                      className="bg-background rounded-lg border border-gray-300 p-2 text-gray-400 relative w-full"
+                      className="bg-background rounded-lg border border-gray-300 p-2 text-gray-400 relative w-full caret-black"
                       id={`${i}form`}
                       value={p}
                       placeholder="Digite aqui uma frase para comparação"
                       onChange={(e) => handlePhraseChange(i, e.target.value)}
                     />
-                    <DeletePhrase lngt={phrases.length}/>
+                    <DeletePhrase lngt={phrases.length} removeFunc={() => handleRemovePhrase(i)}/>
                   </div>
                 </div>
               );
