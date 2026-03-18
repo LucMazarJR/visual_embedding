@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AddButton from "../_components/buttons/add_button";
 import GenerateButton from "../_components/buttons/generate_button";
+import DeletePhrase from "../_components/buttons/delete_phrase";
 
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
@@ -41,14 +42,17 @@ export default function WorkSpace() {
                   <label htmlFor={`${i}form`} className="font-semibold">
                     Frase {i + 1}
                   </label>
-                  <input
-                    type="text"
-                    className="bg-background rounded-lg border border-gray-300 p-2 text-gray-400"
-                    id={`${i}form`}
-                    value={p}
-                    placeholder="Digite aqui uma frase para comparação"
-                    onChange={(e) => handlePhraseChange(i, e.target.value)}
-                  />
+                  <div className="flex relative group">
+                    <input
+                      type="text"
+                      className="bg-background rounded-lg border border-gray-300 p-2 text-gray-400 relative w-full"
+                      id={`${i}form`}
+                      value={p}
+                      placeholder="Digite aqui uma frase para comparação"
+                      onChange={(e) => handlePhraseChange(i, e.target.value)}
+                    />
+                    <DeletePhrase lngt={phrases.length}/>
+                  </div>
                 </div>
               );
             })}
