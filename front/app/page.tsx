@@ -46,6 +46,7 @@ export default function Home() {
             <Box
               className="m-20 h-42 w-42 animate-spin rounded-full border-2 border-gray-400 p-12 drop-shadow-2xl [animation-direction:reverse] [animation-duration:40s]"
               color="#505967"
+              strokeWidth={1.5}
             />
           </div>
           <div className="absolute z-20 h-80 w-80">
