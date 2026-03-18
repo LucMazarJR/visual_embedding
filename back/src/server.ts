@@ -1,11 +1,18 @@
 import 'dotenv/config'
 import express from "express"
+import cors from "cors"
 import routes from "./routes/index.js"
 
 const app = express()
 const port = 3001
 
 app.use(express.json())
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001"
+  ]
+}))
 
 app.get('/', (req, res) => {
   res.send({
