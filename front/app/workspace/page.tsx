@@ -28,6 +28,23 @@ export default function WorkSpace() {
     if (phrases.length < 10) setPhrases([...phrases, ""]);
   };
 
+  const handleSubmit = async (phrases: string[]) => {
+    const data = {sentences: phrases}
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      const resData = await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
     <div className="space-y-8 p-8 px-12">
       <section className="flex flex-col gap-1">
@@ -59,13 +76,13 @@ export default function WorkSpace() {
                       placeholder="Digite aqui uma frase para comparação"
                       onChange={(e) => handlePhraseChange(i, e.target.value)}
                     />
-                    <DeletePhrase lngt={phrases.length} removeFunc={() => handleRemovePhrase(i)}/>
+                    <DeletePhrase lngt={phrases.length} removeFunc={() => handleRemovePhrase(i)} />
                   </div>
                 </div>
               );
             })}
             <AddButton addFunc={handleAddPhrase} len={phrases.length} />
-            <GenerateButton />
+            <GenerateButton generateFunc={() => handleSubmit(phrases)}/>
           </form>
         </div>
         <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4">
