@@ -24,7 +24,7 @@ export const applyUmap = (data: Vectors)=> {
 
     const umap = new UMAP({
       nNeighbors: n_neighbors,
-      minDist: 0.4,
+      minDist: 0.0,
       distanceFn: cosine,
       random: seededRandom(42)
     });
