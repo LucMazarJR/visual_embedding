@@ -8,7 +8,7 @@ import CartesianPlane from "../_components/cartesian_plane";
 
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
-  const [embeddedPhrases, setEmbeddedPhrases] = useState<{points: {x: number, y:number}, phrase: string}[]>([])
+  const [embeddedPhrases, setEmbeddedPhrases] = useState<{ points: { x: number, y: number }, phrase: string }[]>([])
 
   const handlePhraseChange = (index: number, value: string) => {
     setPhrases((prev) => {
@@ -31,7 +31,7 @@ export default function WorkSpace() {
   };
 
   const handleSubmit = async (phrases: string[]) => {
-    const data = {sentences: phrases}
+    const data = { sentences: phrases }
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`, {
@@ -42,8 +42,8 @@ export default function WorkSpace() {
         body: JSON.stringify(data)
       })
       const resData: [number, number][] = await res.json()
-      const formatedData: {points: {x: number, y:number}, phrase: string}[] = resData.map((vector, i) => {
-        return {points: {x: vector[0], y: vector[1]}, phrase: phrases[i]}
+      const formatedData: { points: { x: number, y: number }, phrase: string }[] = resData.map((vector, i) => {
+        return { points: { x: vector[0], y: vector[1] }, phrase: phrases[i] }
       })
       setEmbeddedPhrases(formatedData)
       console.log(formatedData)
@@ -58,7 +58,7 @@ export default function WorkSpace() {
         <p className="font-medium text-purple-700">WORKSPACE</p>
         <h2 className="text-4xl font-bold">Analise a distribuição semântica</h2>
       </section>
-      <div className="flex min-h-screen flex-1 gap-8">
+      <div className="flex min-h-screen flex-1 gap-8 h-screen">
         <div className="flex-4 space-y-6 rounded-lg border border-gray-200 bg-white px-12 py-8">
           <section className="space-y-2">
             <h3 className="text-2xl font-bold">Suas Frases</h3>
@@ -67,10 +67,10 @@ export default function WorkSpace() {
               entrada será vetorizada para mapear suas relações em um espaço 2D.
             </p>
           </section>
-          <form action="" className="flex flex-col gap-6">
+          <form action="" className="flex flex-col h-[60%] gap-6 scroll-smooth overflow-auto">
             {phrases.map((p, i) => {
               return (
-                <div key={i} className="flex flex-col">
+                <div key={i} className="flex flex-col ">
                   <label htmlFor={`${i}form`} className="font-semibold">
                     Frase {i + 1}
                   </label>
@@ -88,12 +88,12 @@ export default function WorkSpace() {
                 </div>
               );
             })}
-            <AddButton addFunc={handleAddPhrase} len={phrases.length} />
-            <GenerateButton generateFunc={() => handleSubmit(phrases)}/>
           </form>
+          <AddButton addFunc={handleAddPhrase} len={phrases.length} />
+          <GenerateButton generateFunc={() => handleSubmit(phrases)} />
         </div>
-        <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4">
-          <CartesianPlane data={embeddedPhrases}/>
+        <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4 h-screen">
+          <CartesianPlane data={embeddedPhrases} />
         </div>
       </div>
     </div>

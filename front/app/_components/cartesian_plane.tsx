@@ -41,7 +41,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
 export default function CartesianPlane({ data }: CartesianPlaneProps) {
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div className="w-full h-full flex items-center justify-center">
       <ResponsiveContainer>
         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
           <CartesianGrid strokeDasharray="3 3" />
