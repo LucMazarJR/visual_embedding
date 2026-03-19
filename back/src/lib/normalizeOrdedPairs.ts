@@ -1,16 +1,18 @@
 export function normalize(points: [number, number][]): [number, number][] {
-    //Throw error
+    if (points.length === 0) return []
+    if (points.length === 1) return [[0, 0]]
 
-    const xs = points.map(p => p[0])
-    const ys = points.map(p => p[1])
+    const centerX = points.reduce((acc, [x]) => acc + x, 0) / points.length
+    const centerY = points.reduce((acc, [, y]) => acc + y, 0) / points.length
 
-    const minX = Math.min(...xs)
-    const maxX = Math.max(...xs)
-    const minY = Math.min(...ys)
-    const maxY = Math.max(...ys)
+    const centered = points.map(([x, y]) => [x - centerX, y - centerY] as [number, number])
+    const maxRadius = Math.max(
+        ...centered.map(([x, y]) => Math.sqrt(x * x + y * y))
+    )
 
-    return points.map(([x, y]) => [
-        2 * (x - minX) / (maxX - minX || 1) - 1,
-        2 * (y - minY) / (maxY - minY || 1) - 1
-    ])
+    if (!Number.isFinite(maxRadius) || maxRadius === 0) {
+        return centered.map(() => [0, 0])
+    }
+
+    return centered.map(([x, y]) => [x / maxRadius, y / maxRadius])
 }
