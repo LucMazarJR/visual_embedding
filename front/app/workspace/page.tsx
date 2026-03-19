@@ -38,6 +38,9 @@ export default function WorkSpace() {
     const data = { sentences: phrases }
 
     try {
+      if(data.sentences.filter(phrase => phrase.trim().length !== 0).length < 3){
+        throw new Error("Número de frases insuficiente")
+      }
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`, {
         method: "POST",
         headers: {
@@ -52,7 +55,7 @@ export default function WorkSpace() {
       setEmbeddedPhrases(formatedData)
       console.log(formatedData)
     } catch (e) {
-      console.log(e)
+      alert(e) // Mudar para aviso de erro nativo
     }
   }
 
