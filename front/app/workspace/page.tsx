@@ -8,7 +8,7 @@ import CartesianPlane from "../_components/cartesian_plane";
 
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
-  const [embeddedPhrases, setEmbeddedPhrases] = useState<{x: number, y: number}[]>([])
+  const [embeddedPhrases, setEmbeddedPhrases] = useState<{points: {x: number, y:number}, phrase: string}[]>([])
 
   const handlePhraseChange = (index: number, value: string) => {
     setPhrases((prev) => {
@@ -42,8 +42,8 @@ export default function WorkSpace() {
         body: JSON.stringify(data)
       })
       const resData: [number, number][] = await res.json()
-      const formatedData: {x: number, y:number}[] = resData.map(vector => {
-        return {x: vector[0], y: vector[1]}
+      const formatedData: {points: {x: number, y:number}, phrase: string}[] = resData.map((vector, i) => {
+        return {points: {x: vector[0], y: vector[1]}, phrase: phrases[i]}
       })
       setEmbeddedPhrases(formatedData)
       console.log(formatedData)
