@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddButton from "../_components/buttons/add_button";
 import GenerateButton from "../_components/buttons/generate_button";
 import DeletePhrase from "../_components/buttons/delete_phrase";
@@ -9,6 +9,8 @@ import CartesianPlane from "../_components/cartesian_plane";
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
   const [embeddedPhrases, setEmbeddedPhrases] = useState<{ points: { x: number, y: number }, phrase: string }[]>([])
+  const phrasesContainerRef = useRef<HTMLFormElement>(null);
+  const previousPhrasesLengthRef = useRef(phrases.length);
 
   const handlePhraseChange = (index: number, value: string) => {
     setPhrases((prev) => {
@@ -27,7 +29,9 @@ export default function WorkSpace() {
   }
 
   const handleAddPhrase = () => {
-    if (phrases.length < 10) setPhrases([...phrases, ""]);
+    if (phrases.length < 10) {
+      setPhrases([...phrases, ""]);
+    }
   };
 
   const handleSubmit = async (phrases: string[]) => {
@@ -52,6 +56,24 @@ export default function WorkSpace() {
     }
   }
 
+  const scrollToBottom = () => {
+    const container = phrasesContainerRef.current;
+    if (!container) return;
+
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    if (phrases.length > previousPhrasesLengthRef.current) {
+      scrollToBottom();
+    }
+
+    previousPhrasesLengthRef.current = phrases.length;
+  }, [phrases.length]);
+
   return (
     <div className="space-y-8 p-8 px-12">
       <section className="flex flex-col gap-1">
@@ -67,7 +89,7 @@ export default function WorkSpace() {
               entrada será vetorizada para mapear suas relações em um espaço 2D.
             </p>
           </section>
-          <form action="" className="flex flex-col h-[60%] gap-6 scroll-smooth overflow-auto">
+          <form ref={phrasesContainerRef} action="" className="flex flex-col h-[60%] gap-6 scroll-auto overflow-auto">
             {phrases.map((p, i) => {
               return (
                 <div key={i} className="flex flex-col ">
