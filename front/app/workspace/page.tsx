@@ -4,9 +4,11 @@ import { useState } from "react";
 import AddButton from "../_components/buttons/add_button";
 import GenerateButton from "../_components/buttons/generate_button";
 import DeletePhrase from "../_components/buttons/delete_phrase";
+import CartesianPlane from "../_components/cartesian_plane";
 
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
+  const [embeddedPhrases, setEmbeddedPhrases] = useState<{x: number, y: number}[]>([])
 
   const handlePhraseChange = (index: number, value: string) => {
     setPhrases((prev) => {
@@ -39,7 +41,12 @@ export default function WorkSpace() {
         },
         body: JSON.stringify(data)
       })
-      const resData = await res.json()
+      const resData: [number, number][] = await res.json()
+      const formatedData: {x: number, y:number}[] = resData.map(vector => {
+        return {x: vector[0], y: vector[1]}
+      })
+      setEmbeddedPhrases(formatedData)
+      console.log(formatedData)
     } catch (e) {
       console.log(e)
     }
@@ -86,7 +93,7 @@ export default function WorkSpace() {
           </form>
         </div>
         <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4">
-          b
+          <CartesianPlane data={embeddedPhrases}/>
         </div>
       </div>
     </div>
