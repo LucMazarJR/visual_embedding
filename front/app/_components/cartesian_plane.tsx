@@ -31,7 +31,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
   return (
     <div className="rounded-md border border-gray-200 bg-white p-2 text-sm shadow">
-      <p className="font-semibold text-gray-800">{`"${point.phrase}"`}</p>
+      <p className="font-semibold text-gray-800">{point.phrase}</p>
       <p className="text-gray-500">
         x: {point.points?.x?.toFixed(3)} | y: {point.points?.y?.toFixed(3)}
       </p>
