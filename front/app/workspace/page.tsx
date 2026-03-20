@@ -6,6 +6,15 @@ import GenerateButton from "../_components/buttons/generate_button";
 import DeletePhrase from "../_components/buttons/delete_phrase";
 import CartesianPlane from "../_components/cartesian_plane";
 
+import { Share_Tech } from "next/font/google";
+import { Sparkles } from "lucide-react";
+
+const share_tech = Share_Tech({
+  weight: "400",
+  variable: "--font-share-tech",
+  subsets: ["latin"],
+});
+
 export default function WorkSpace() {
   const [phrases, setPhrases] = useState(["", "", ""]);
   const [embeddedPhrases, setEmbeddedPhrases] = useState<{ points: { x: number, y: number }, phrase: string }[]>([])
@@ -38,7 +47,7 @@ export default function WorkSpace() {
     const data = { sentences: phrases }
 
     try {
-      if(data.sentences.filter(phrase => phrase.trim().length !== 0).length < 3){
+      if (data.sentences.filter(phrase => phrase.trim().length !== 0).length < 3) {
         throw new Error("Número de frases insuficiente")
       }
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`, {
@@ -117,8 +126,17 @@ export default function WorkSpace() {
           <AddButton addFunc={handleAddPhrase} len={phrases.length} />
           <GenerateButton generateFunc={() => handleSubmit(phrases)} />
         </div>
-        <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4 h-screen">
-          <CartesianPlane data={embeddedPhrases} />
+        <div className="flex-6 rounded-lg border border-gray-200 bg-white p-4 h-screen flex items-center justify-center">
+          {!!embeddedPhrases.length ?
+            <CartesianPlane data={embeddedPhrases} /> :
+
+            <div className={`flex items-center justify-center text-3xl text-center font-bold gap-5 w-full h-full ${share_tech.className}`}>
+              <Sparkles className="animate-pulse duration-100"/>
+              Gere uma vizualização
+              para começar
+              <Sparkles className="animate-pulse duration-200"/>
+            </div>
+          }
         </div>
       </div>
     </div>
