@@ -11,6 +11,10 @@ export const embeddingCotroller = {
                 throw new AppError("No sentences provided", 422);
             }
 
+            if(sentences.length > 10 || sentences.length < 3){
+                throw new AppError("Number of sentences must be between 3 and 10", 422);
+            }
+
             const data = await embeddingServices.embedData(sentences);
 
             return res.status(200).json(data);
