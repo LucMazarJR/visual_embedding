@@ -8,14 +8,14 @@ import styles from "./page.module.css";
 
 export default function About() {
   return (
-    <div className="mt-12 mb-24 flex w-full flex-col items-center text-center">
-      <div className="w-1/2 space-y-2">
-        <h1 className="w-full text-start text-5xl font-black">
+    <div className="mt-8 mb-14 flex w-full flex-col items-center px-4 text-center sm:mt-10 sm:mb-20 sm:px-8 lg:mt-12 lg:mb-24">
+      <div className="w-full max-w-5xl space-y-2">
+        <h1 className="w-full text-start text-3xl font-black sm:text-4xl lg:text-5xl">
           O que é o Sentence Space?
         </h1>
-        <div className="mt-2 flex flex-col gap-12 text-justify">
+        <div className="mt-2 flex flex-col gap-8 text-justify sm:gap-10 lg:gap-12">
           <section>
-            <p className="text-gray-600">
+            <p className="text-sm text-gray-600 sm:text-base lg:text-lg">
               Sentence Space é um experimento/ferramenta que transforma frases
               em vetores e as mostra num espaço visual para você ver, explorar e
               entender como uma IA as interpreta e organiza semanticamente.
@@ -26,7 +26,7 @@ export default function About() {
             <h3>
               <SquareTerminal /> O que fazemos?
             </h3>
-            <p>
+            <p className="text-sm sm:text-base lg:text-lg">
               Recebemos de 3 a 10 frases (do usuário) e transformamos cada frase em
               um vetor numérico (embedding) usando o modelo de embeddings do Gemini.
               Em seguida reduzimos a
@@ -41,7 +41,7 @@ export default function About() {
               Como funciona?
             </h3>
             <div className="mt-2 flex flex-col items-center">
-              <ol className="w-[95%] list-inside list-decimal space-y-2 marker:font-bold">
+              <ol className="w-full list-inside list-decimal space-y-2 text-sm marker:font-bold sm:w-[95%] sm:text-base lg:text-lg">
                 <li>
                   <span>Entrada:</span> o usuário envia uma lista de frases.
                 </li>
@@ -70,7 +70,7 @@ export default function About() {
               <Lightbulb />E por que isso importa?
             </h3>
             <div className="mt-2 flex flex-col items-center">
-              <ul className="w-[95%] list-inside list-disc space-y-2">
+              <ul className="w-full list-inside list-disc space-y-2 text-sm sm:w-[95%] sm:text-base lg:text-lg">
                 <li>
                   <span>Torna o abstrato visível:</span> embeddings são números;
                   aqui você vê onde frases parecidas ficam próximas no espaço.
@@ -92,7 +92,7 @@ export default function About() {
               <Sparkles />
               Inspiração
             </h3>
-            <p>
+            <p className="text-sm sm:text-base lg:text-lg">
               A ideia nasceu do uso de embeddings para aproximação semântica em
               chatbots e bancos de dados vetoriais. Durante um projeto de
               extensão no PET-Saúde, precisei implementar um conjunto de FAQs em
