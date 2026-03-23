@@ -12,10 +12,10 @@ import {
 } from "recharts";
 
 type CartesianPlaneProps = {
-  data: { points: { x: number, y: number }, phrase: string }[]
+  data: { points: { x: number, y: number }, sentence: { phrase: string, isEmpty: boolean } }[]
 }
 
-type ChartPoint = { points: { x: number; y: number }; phrase: string };
+type ChartPoint = { points: { x: number; y: number }; sentence: { phrase: string, isEmpty: boolean } };
 
 type CustomTooltipProps = {
   active?: boolean;
@@ -31,7 +31,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
   return (
     <div className="rounded-md border border-gray-200 bg-white p-2 text-sm shadow">
-      <p className="font-semibold text-gray-800">{point.phrase}</p>
+      <p className="font-semibold text-gray-800">{point.sentence.phrase}</p>
       <p className="text-gray-500">
         x: {point.points?.x?.toFixed(3)} | y: {point.points?.y?.toFixed(3)}
       </p>

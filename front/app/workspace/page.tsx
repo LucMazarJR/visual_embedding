@@ -16,15 +16,15 @@ const share_tech = Share_Tech({
 });
 
 export default function WorkSpace() {
-  const [phrases, setPhrases] = useState(["", "", ""]);
-  const [embeddedPhrases, setEmbeddedPhrases] = useState<{ points: { x: number, y: number }, phrase: string }[]>([])
+  const [phrases, setPhrases] = useState<{ phrase: string, isEmpty: boolean }[]>([{ phrase: "", isEmpty: false }, { phrase: "", isEmpty: false }, { phrase: "", isEmpty: false }]);
+  const [embeddedPhrases, setEmbeddedPhrases] = useState<{ points: { x: number, y: number }, sentence: { phrase: string, isEmpty: boolean } }[]>([])
   const phrasesContainerRef = useRef<HTMLFormElement>(null);
   const previousPhrasesLengthRef = useRef(phrases.length);
 
   const handlePhraseChange = (index: number, value: string) => {
     setPhrases((prev) => {
       const next = [...prev];
-      next[index] = value;
+      next[index] = { phrase: value, isEmpty: false };
       return next;
     });
   };
@@ -39,17 +39,34 @@ export default function WorkSpace() {
 
   const handleAddPhrase = () => {
     if (phrases.length < 10) {
-      setPhrases([...phrases, ""]);
+      setPhrases([...phrases, { phrase: "", isEmpty: false }]);
     }
   };
 
-  const handleSubmit = async (phrases: string[]) => {
-    const data = { sentences: phrases }
-
+  const handleSubmit = async (phrases: { phrase: string, isEmpty: boolean }[]) => {
     try {
-      if (data.sentences.filter(phrase => phrase.trim().length !== 0).length < 3) {
+      const checkedPhrases = phrases.map((item) => ({
+        ...item,
+        isEmpty: item.phrase.trim().length === 0,
+      }));
+
+      const submitError = checkedPhrases.some((item) => item.isEmpty);
+      setPhrases(checkedPhrases);
+
+      if (submitError) {
+        alert("Existem campos vazios")
+        return;
+      }
+
+      const validPhrases = checkedPhrases.filter((item) => !item.isEmpty);
+      const data = { sentences: validPhrases.map((item) => item.phrase) }
+
+      /*
+      if (data.sentences.length < 3) {
         throw new Error("Número de frases insuficiente")
       }
+      */
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`, {
         method: "POST",
         headers: {
@@ -58,11 +75,11 @@ export default function WorkSpace() {
         body: JSON.stringify(data)
       })
       const resData: [number, number][] = await res.json()
-      const formatedData: { points: { x: number, y: number }, phrase: string }[] = resData.map((vector, i) => {
-        return { points: { x: vector[0], y: vector[1] }, phrase: phrases[i] }
+      const formattedData: { points: { x: number, y: number }, sentence: { phrase: string, isEmpty: boolean } }[] = resData.map((vector, i) => {
+        return { points: { x: vector[0], y: vector[1] }, sentence: validPhrases[i] ?? { phrase: "", isEmpty: true } }
       })
-      setEmbeddedPhrases(formatedData)
-      console.log(formatedData)
+      setEmbeddedPhrases(formattedData)
+      console.log(formattedData)
     } catch (e) {
       alert(e) // Mudar para aviso de erro nativo
     }
@@ -111,10 +128,10 @@ export default function WorkSpace() {
                   <div className="flex relative group">
                     <input
                       type="text"
-                      className="bg-background rounded-lg border border-gray-300 p-2 text-gray-400 relative w-full caret-black"
+                      className={"rounded-lg border p-2 relative w-full caret-black " + (p.isEmpty ? "border-red-300 bg-red-50 text-red-800" : "border-gray-300 bg-background text-gray-400")}
                       id={`${i}form`}
-                      value={p}
-                      placeholder="Digite aqui uma frase para comparação"
+                      value={p.phrase}
+                      placeholder={p.isEmpty ? "Adicione uma frase ou exclua esse campo" : "Digite aqui uma frase para comparação"}
                       onChange={(e) => handlePhraseChange(i, e.target.value)}
                     />
                     <DeletePhrase lngt={phrases.length} removeFunc={() => handleRemovePhrase(i)} />
