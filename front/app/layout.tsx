@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${inter.variable} flex min-h-screen flex-col antialiased`}
       >
         <Header />
-        {children}
+        <main className="flex w-full flex-1 flex-col">{children}</main>
         <Footer />
       </body>
     </html>
