@@ -18,7 +18,7 @@ export default function About() {
             <p className="text-gray-600">
               Sentence Space é um experimento/ferramenta que transforma frases
               em vetores e as mostra num espaço visual para você ver, explorar e
-              entender como uma IA à interpreta e organiza semanticamente.
+              entender como uma IA as interpreta e organiza semanticamente.
             </p>
           </section>
           <hr className="border-gray-200" />
@@ -27,11 +27,12 @@ export default function About() {
               <SquareTerminal /> O que fazemos?
             </h3>
             <p>
-              Recebemos várias frases (do usuário) e transformamos cada frase em
-              um vetor numérico (embedding). Em seguida reduzimos a
+              Recebemos de 3 a 10 frases (do usuário) e transformamos cada frase em
+              um vetor numérico (embedding) usando o modelo de embeddings do Gemini.
+              Em seguida reduzimos a
               dimensionalidade desses vetores com UMAP para que possam ser
-              desenhados em 2D. Depois aplicamos padronização e ajustes visuais
-              para deixar a visualização clara, comparável e informativa.
+              desenhados em 2D. Depois aplicamos uma normalização para manter os
+              pontos em uma escala consistente e comparável.
             </p>
           </section>
           <section className={styles.section}>
@@ -45,18 +46,17 @@ export default function About() {
                   <span>Entrada:</span> o usuário envia uma lista de frases.
                 </li>
                 <li>
-                  <span>Embedding:</span> cada frase é convertida em um vetor
-                  que captura seu significado semântico.
+                  <span>Embedding:</span> cada frase é convertida em um vetor que
+                  captura seu significado semântico.
                 </li>
                 <li>
                   <span>Redução (UMAP):</span> esses vetores de alta dimensão
-                  são projetados em 2 dimensões por UMAP, preservando relações
-                  semânticas locais.
+                  são projetados em 2 dimensões por UMAP com foco em preservar
+                  relações semânticas locais.
                 </li>
                 <li>
-                  <span>Padronização & Styling:</span> normalizamos escalas,
-                  aplicamos cores/legendas e melhoramos a disposição para
-                  visualização.
+                  <span>Normalização:</span> centralizamos e ajustamos a escala
+                  dos pontos para facilitar leitura e comparação.
                 </li>
                 <li>
                   <span>Exploração:</span> o usuário vê as frases no espaço,
@@ -77,7 +77,7 @@ export default function About() {
                 </li>
                 <li>
                   <span>Aprendizado e diagnóstico:</span> ajuda a entender
-                  modelos de linguagem, clusters semânticos e possíveis vieses
+                  modelos de linguagem, clusters semânticos e possíveis vieses.
                 </li>
                 <li>
                   <span>Protótipo prático:</span> inspiração direta de como

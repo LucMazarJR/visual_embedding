@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend - Sentence Space
 
-## Getting Started
+Aplicacao web em Next.js para inserir frases, enviar para a API de embeddings e visualizar os pontos em um plano cartesiano 2D.
 
-First, run the development server:
+## Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 16
+- React 19
+- TypeScript
+- Recharts
+- Tailwind CSS 4
+
+## Requisitos
+
+- Node.js 20+
+- npm
+
+## Configuracao
+
+Crie um arquivo `.env` nesta pasta com:
+
+```env
+NEXT_PUBLIC_BASE_API_URL=http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Executar em desenvolvimento
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Aplicacao disponivel em `http://localhost:3000`.
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev`: inicia o servidor de desenvolvimento
+- `npm run build`: gera build de producao
+- `npm run start`: inicia a aplicacao em modo producao
+- `npm run lint`: executa ESLint
+- `npm run format`: formata o codigo com Prettier
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura principal
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/page.tsx`: landing page
+- `app/about/page.tsx`: explicacao do projeto
+- `app/workspace/page.tsx`: fluxo de entrada e geracao dos pontos
+- `app/_components/cartesian_plane.tsx`: grafico de dispersao

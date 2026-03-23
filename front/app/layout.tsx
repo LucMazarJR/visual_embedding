@@ -11,7 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Sentence Space",
-  description: "", // Adicionar descrição depois
+  description:
+    "Visualize a proximidade semantica entre frases em 2D usando embeddings do Gemini e reducao com UMAP.",
 };
 
 export default function RootLayout({
