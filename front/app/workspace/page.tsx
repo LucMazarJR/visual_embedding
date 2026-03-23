@@ -201,7 +201,7 @@ export default function WorkSpace() {
                     src="/workspace-init.png"
                     width={500}
                     height={500}
-                    sizes="(max-width: zz) 256px, (max-width: 1024px) 320px, 448px"
+                    sizes="(max-width: 612px) 256px, (max-width: 1024px) 320px, 448px"
                     className="h-auto w-64 sm:w-72 md:w-80 lg:w-md"
                     alt="Ilustração inicial da visualização semântica"
                     priority
