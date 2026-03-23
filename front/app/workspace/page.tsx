@@ -188,7 +188,7 @@ export default function WorkSpace() {
             (
               <div className="flex flex-col gap-6">
                 <span className="font-bold text-2xl">Processando dados</span>
-                <Loader2 className="h-15 w-full animate-spin [animation-duration:3s]"/>
+                <Loader2 className="h-15 w-full animate-spin [animation-duration:3s]" />
               </div>
             ) :
             (
