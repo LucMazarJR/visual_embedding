@@ -12,10 +12,16 @@ import {
 } from "recharts";
 
 type CartesianPlaneProps = {
-  data: { points: { x: number, y: number }, sentence: { phrase: string, isEmpty: boolean } }[]
-}
+  data: {
+    points: { x: number; y: number };
+    sentence: { phrase: string; isEmpty: boolean };
+  }[];
+};
 
-type ChartPoint = { points: { x: number; y: number }; sentence: { phrase: string, isEmpty: boolean } };
+type ChartPoint = {
+  points: { x: number; y: number };
+  sentence: { phrase: string; isEmpty: boolean };
+};
 
 type CustomTooltipProps = {
   active?: boolean;
@@ -41,16 +47,26 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
 export default function CartesianPlane({ data }: CartesianPlaneProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="flex h-full w-full items-center justify-center">
       <ResponsiveContainer>
         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
           <CartesianGrid strokeDasharray="3 3" />
 
           {/* Eixo X */}
-          <XAxis type="number" dataKey="points.x" domain={[-1.1, 1.1]} tickCount={7} />
+          <XAxis
+            type="number"
+            dataKey="points.x"
+            domain={[-1.1, 1.1]}
+            tickCount={7}
+          />
 
           {/* Eixo Y */}
-          <YAxis type="number" dataKey="points.y" domain={[-1.1, 1.1]} tickCount={7} />
+          <YAxis
+            type="number"
+            dataKey="points.y"
+            domain={[-1.1, 1.1]}
+            tickCount={7}
+          />
 
           {/* Linha vertical no X = 0 */}
           <ReferenceLine x={0} stroke="black" />
