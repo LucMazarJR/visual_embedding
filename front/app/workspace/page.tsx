@@ -5,9 +5,9 @@ import AddButton from "../_components/buttons/add_button";
 import GenerateButton from "../_components/buttons/generate_button";
 import DeletePhrase from "../_components/buttons/delete_phrase";
 import CartesianPlane from "../_components/cartesian_plane";
+import Image from "next/image";
 
 import { Share_Tech } from "next/font/google";
-import { Sparkles } from "lucide-react";
 
 const share_tech = Share_Tech({
   weight: "400",
@@ -130,11 +130,20 @@ export default function WorkSpace() {
           {!!embeddedPhrases.length ?
             <CartesianPlane data={embeddedPhrases} /> :
 
-            <div className={`flex items-center justify-center text-3xl text-center font-bold gap-5 w-full h-full ${share_tech.className}`}>
-              <Sparkles className="animate-pulse duration-100"/>
+            <div className={`flex flex-col items-center justify-center text-3xl text-center font-bold gap-8 w-full h-full ${share_tech.className}`}>
               Gere uma vizualização
               para começar
-              <Sparkles className="animate-pulse duration-200"/>
+              <div className="w-full flex justify-center">
+                <Image
+                  src="/workspace-init.png"
+                  width={500}
+                  height={500}
+                  sizes="(max-width: zz) 256px, (max-width: 1024px) 320px, 448px"
+                  className="w-64 sm:w-72 md:w-80 lg:w-md h-auto"
+                  alt="Ilustração inicial da visualização semântica"
+                  priority
+                />
+              </div>
             </div>
           }
         </div>
