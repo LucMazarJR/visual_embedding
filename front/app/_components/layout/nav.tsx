@@ -1,16 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "../../_contexts/language-context";
 
 interface navBarProps {
   header?: boolean;
 }
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/workspace", label: "Workspace" },
-];
-
 export default function NavBar({ header = true }: navBarProps) {
+  const { language } = useLanguage();
+  const navItems = [
+    { href: "/", label: language === "pt" ? "Inicio" : "Home" },
+    { href: "/about", label: language === "pt" ? "Sobre" : "About" },
+    {
+      href: "/workspace",
+      label: language === "pt" ? "Workspace" : "Workspace",
+    },
+  ];
+
   const navItemClasses = [
     "inline-flex rounded-md px-3 py-1 text-sm transition-all duration-150 ease-in-out hover:scale-105 sm:text-base",
     header ? "hover:bg-accent" : "",

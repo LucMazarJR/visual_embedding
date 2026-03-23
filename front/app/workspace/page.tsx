@@ -9,6 +9,7 @@ import Image from "next/image";
 
 import { Share_Tech } from "next/font/google";
 import { Loader2 } from "lucide-react";
+import { useLanguage } from "../_contexts/language-context";
 
 const share_tech = Share_Tech({
   weight: "400",
@@ -17,6 +18,42 @@ const share_tech = Share_Tech({
 });
 
 export default function WorkSpace() {
+  const { language } = useLanguage();
+  const t = {
+    tag: language === "pt" ? "WORKSPACE" : "WORKSPACE",
+    title:
+      language === "pt"
+        ? "Analise a distribuicao semantica"
+        : "Analyze semantic distribution",
+    yourSentences: language === "pt" ? "Suas Frases" : "Your Sentences",
+    helper:
+      language === "pt"
+        ? "Insira suas frases abaixo para processar a analise semantica. Cada entrada sera vetorizada para mapear suas relacoes em um espaco 2D."
+        : "Enter your sentences below to process semantic analysis. Each input will be vectorized to map relationships in a 2D space.",
+    sentenceLabel: language === "pt" ? "Frase" : "Sentence",
+    emptyFieldAlert:
+      language === "pt"
+        ? "Existem campos vazios"
+        : "There are empty fields",
+    emptyPlaceholder:
+      language === "pt"
+        ? "Adicione uma frase ou exclua esse campo"
+        : "Add a sentence or remove this field",
+    filledPlaceholder:
+      language === "pt"
+        ? "Digite aqui uma frase para comparacao"
+        : "Type a sentence here for comparison",
+    loading: language === "pt" ? "Processando dados" : "Processing data",
+    emptyState:
+      language === "pt"
+        ? "Gere uma visualizacao para comecar"
+        : "Generate a visualization to get started",
+    emptyAlt:
+      language === "pt"
+        ? "Ilustracao inicial da visualizacao semantica"
+        : "Initial semantic visualization illustration",
+  };
+
   const [phrases, setPhrases] = useState<
     { phrase: string; isEmpty: boolean }[]
   >([
@@ -69,7 +106,7 @@ export default function WorkSpace() {
       setPhrases(checkedPhrases);
 
       if (submitError) {
-        alert("Existem campos vazios");
+        alert(t.emptyFieldAlert);
         return;
       }
 
@@ -128,18 +165,15 @@ export default function WorkSpace() {
   return (
     <div className="space-y-6 px-4 py-6 sm:px-8 sm:py-8 lg:space-y-8 lg:px-12">
       <section className="flex flex-col gap-1">
-        <p className="text-sm font-medium text-purple-700 sm:text-base">WORKSPACE</p>
-        <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-          Analise a distribuição semântica
-        </h2>
+        <p className="text-sm font-medium text-purple-700 sm:text-base">{t.tag}</p>
+        <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">{t.title}</h2>
       </section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-10 lg:gap-8">
         <div className="space-y-5 rounded-lg border border-gray-200 bg-white px-4 py-5 sm:px-6 sm:py-6 lg:col-span-4 lg:space-y-6 lg:px-10 lg:py-8">
           <section className="space-y-2">
-            <h3 className="text-xl font-bold sm:text-2xl">Suas Frases</h3>
+            <h3 className="text-xl font-bold sm:text-2xl">{t.yourSentences}</h3>
             <p className="text-sm text-gray-500 sm:text-base">
-              Insira suas frases abaixo para processar a análise semântica. Cada
-              entrada será vetorizada para mapear suas relações em um espaço 2D.
+              {t.helper}
             </p>
           </section>
           <form
@@ -151,7 +185,7 @@ export default function WorkSpace() {
               return (
                 <div key={i} className="flex flex-col gap-1">
                   <label htmlFor={`${i}form`} className="text-sm font-semibold sm:text-base">
-                    Frase {i + 1}
+                    {t.sentenceLabel} {i + 1}
                   </label>
                   <div className="group relative flex">
                     <input
@@ -166,8 +200,8 @@ export default function WorkSpace() {
                       value={p.phrase}
                       placeholder={
                         p.isEmpty
-                          ? "Adicione uma frase ou exclua esse campo"
-                          : "Digite aqui uma frase para comparação"
+                          ? t.emptyPlaceholder
+                          : t.filledPlaceholder
                       }
                       onChange={(e) => handlePhraseChange(i, e.target.value)}
                     />
@@ -189,14 +223,14 @@ export default function WorkSpace() {
               <CartesianPlane data={embeddedPhrases} />
             ) : isLoading ? (
               <div className="flex h-full flex-col items-center justify-center gap-6 text-center">
-                <span className="text-xl font-bold sm:text-2xl">Processando dados</span>
+                <span className="text-xl font-bold sm:text-2xl">{t.loading}</span>
                 <Loader2 className="h-14 w-14 animate-spin [animation-duration:3s]" />
               </div>
             ) : (
               <div
                 className={`flex h-full w-full flex-col items-center justify-center gap-6 px-4 text-center text-2xl font-bold sm:gap-8 sm:text-3xl ${share_tech.className}`}
               >
-                Gere uma vizualização para começar
+                {t.emptyState}
                 <div className="flex w-full justify-center">
                   <Image
                     src="/workspace-init.png"
@@ -204,7 +238,7 @@ export default function WorkSpace() {
                     height={500}
                     sizes="(max-width: 612px) 240px, (max-width: 1024px) 320px, 448px"
                     className="h-auto w-56 sm:w-72 md:w-80 lg:w-md"
-                    alt="Ilustração inicial da visualização semântica"
+                    alt={t.emptyAlt}
                     priority
                   />
                 </div>

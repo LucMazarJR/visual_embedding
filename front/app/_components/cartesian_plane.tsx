@@ -10,6 +10,7 @@ import {
   ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
+import { useLanguage } from "../_contexts/language-context";
 
 type CartesianPlaneProps = {
   data: {
@@ -46,9 +47,13 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 }
 
 export default function CartesianPlane({ data }: CartesianPlaneProps) {
+  const { language } = useLanguage();
+
   return (
     <div className="flex flex-col h-full w-full items-center justify-center">
-      <h2 className="text-start font-medium text-lg text-foreground">Vizualização dos Dados</h2>
+      <h2 className="text-start font-medium text-lg text-foreground">
+        {language === "pt" ? "Visualizacao dos Dados" : "Data Visualization"}
+      </h2>
       <ResponsiveContainer>
         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
           <CartesianGrid strokeDasharray="3 3" />

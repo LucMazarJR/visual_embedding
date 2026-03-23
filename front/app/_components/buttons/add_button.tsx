@@ -1,4 +1,7 @@
+"use client";
+
 import { CirclePlus, X } from "lucide-react";
+import { useLanguage } from "../../_contexts/language-context";
 
 type AddButtonProps = {
   addFunc: () => void;
@@ -6,6 +9,8 @@ type AddButtonProps = {
 };
 
 export default function AddButton({ addFunc, len }: AddButtonProps) {
+  const { language } = useLanguage();
+
   return (
     <button
       className={
@@ -18,7 +23,13 @@ export default function AddButton({ addFunc, len }: AddButtonProps) {
       onClick={addFunc}
     >
       {len >= 10 ? <X /> : <CirclePlus />}
-      {len >= 10 ? "Limite de frases atingido" : "Adicione uma Frase"}
+      {len >= 10
+        ? language === "pt"
+          ? "Limite de frases atingido"
+          : "Sentence limit reached"
+        : language === "pt"
+          ? "Adicione uma Frase"
+          : "Add a Sentence"}
     </button>
   );
 }
