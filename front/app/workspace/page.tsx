@@ -8,6 +8,7 @@ import CartesianPlane from "../_components/cartesian_plane";
 import Image from "next/image";
 
 import { Share_Tech } from "next/font/google";
+import { Loader2 } from "lucide-react";
 
 const share_tech = Share_Tech({
   weight: "400",
@@ -29,6 +30,7 @@ export default function WorkSpace() {
       sentence: { phrase: string; isEmpty: boolean };
     }[]
   >([]);
+  const [isLoading, setIsLoading] = useState(false)
   const phrasesContainerRef = useRef<HTMLFormElement>(null);
   const previousPhrasesLengthRef = useRef(phrases.length);
 
@@ -71,14 +73,10 @@ export default function WorkSpace() {
         return;
       }
 
+      setIsLoading(true)
+
       const validPhrases = checkedPhrases.filter((item) => !item.isEmpty);
       const data = { sentences: validPhrases.map((item) => item.phrase) };
-
-      /*
-      if (data.sentences.length < 3) {
-        throw new Error("Número de frases insuficiente")
-      }
-      */
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/embedding/process`,
@@ -104,6 +102,8 @@ export default function WorkSpace() {
       console.log(formattedData);
     } catch (e) {
       alert(e); // Mudar para aviso de erro nativo
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -181,27 +181,34 @@ export default function WorkSpace() {
           <AddButton addFunc={handleAddPhrase} len={phrases.length} />
           <GenerateButton generateFunc={() => handleSubmit(phrases)} />
         </div>
-        <div className="flex h-screen flex-6 items-center justify-center rounded-lg border border-gray-200 bg-white p-4">
+        <div className="flex h-full flex-6 items-center justify-center rounded-lg border border-gray-200 bg-white p-4">
           {!!embeddedPhrases.length ? (
             <CartesianPlane data={embeddedPhrases} />
-          ) : (
-            <div
-              className={`flex h-full w-full flex-col items-center justify-center gap-8 text-center text-3xl font-bold ${share_tech.className}`}
-            >
-              Gere uma vizualização para começar
-              <div className="flex w-full justify-center">
-                <Image
-                  src="/workspace-init.png"
-                  width={500}
-                  height={500}
-                  sizes="(max-width: zz) 256px, (max-width: 1024px) 320px, 448px"
-                  className="h-auto w-64 sm:w-72 md:w-80 lg:w-md"
-                  alt="Ilustração inicial da visualização semântica"
-                  priority
-                />
+          ) : isLoading ?
+            (
+              <div className="flex flex-col gap-6">
+                <span className="font-bold text-2xl">Processando dados</span>
+                <Loader2 className="h-15 w-full animate-spin [animation-duration:3s]"/>
               </div>
-            </div>
-          )}
+            ) :
+            (
+              <div
+                className={`flex h-full w-full flex-col items-center justify-center gap-8 text-center text-3xl font-bold ${share_tech.className}`}
+              >
+                Gere uma vizualização para começar
+                <div className="flex w-full justify-center">
+                  <Image
+                    src="/workspace-init.png"
+                    width={500}
+                    height={500}
+                    sizes="(max-width: zz) 256px, (max-width: 1024px) 320px, 448px"
+                    className="h-auto w-64 sm:w-72 md:w-80 lg:w-md"
+                    alt="Ilustração inicial da visualização semântica"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
         </div>
       </div>
     </div>
